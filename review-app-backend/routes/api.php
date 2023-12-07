@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource("lesson", LessonController::class);
 
-Route::apiResource("review", ReviewController::class);
+Route::apiResource("{lesson}/review", ReviewController::class);
