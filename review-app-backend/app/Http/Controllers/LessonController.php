@@ -14,7 +14,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        // teachersとのリレーションを同時に取得している
+        // リレーションから同時に取得している
         $lessons = Lesson::with("teachers")->withAvg("reviews", "ease")->withAvg("reviews", "enrichment")->get();
 
         return new LessonCollection($lessons);
