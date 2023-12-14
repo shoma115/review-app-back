@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Lesson;
-use App\Models\Department;
+use App\Models\Major;
 
 class Division extends Model
 {
@@ -15,7 +15,7 @@ class Division extends Model
         return $this->hasMany(Lesson::class);
     }
 
-    public function department() {
-        return $this->belongsTo(Department::class);
+    public function major() {
+        return $this->belongsTo(Major::class);
     }
 }

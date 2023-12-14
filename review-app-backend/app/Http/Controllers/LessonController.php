@@ -15,7 +15,11 @@ class LessonController extends Controller
     public function index()
     {
         // リレーションから同時に取得している
-        $lessons = Lesson::with("teachers")->withAvg("reviews", "ease")->withAvg("reviews", "enrichment")->get();
+        $lessons = Lesson::with("teachers")
+                   ->withAvg("reviews", "ease")
+                   ->withAvg("reviews", "enrichment")
+                   ->with("division.major.department.faculty")
+                   ->get();
 
         return new LessonCollection($lessons);
     }
