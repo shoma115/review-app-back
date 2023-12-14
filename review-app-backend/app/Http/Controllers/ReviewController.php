@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Lesson;
+use App\Http\Resources\ReviewCollection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -11,9 +13,11 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Lesson $lesson)
     {
-        //
+        $reviews = $lesson->with("reviews")->get();
+        
+        return new ReviewCollection($reviews);
     }
 
     /**

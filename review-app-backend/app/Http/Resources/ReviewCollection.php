@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class LessonCollection extends ResourceCollection
+class ReviewCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,9 +14,8 @@ class LessonCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        // 渡したデータをlessonキーを持つJSONに変換
         return [
-            "lessons" => $this->collection,
+            "reviews" => $this->collection,
         ];
     }
 }

@@ -6,14 +6,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LessonAPITest extends TestCase
+class ReviewAPITest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_lesson(): void
+    public function test_review(): void
     {
-        $response = $this->get('/api/lesson');
+        $response = $this->get('/api/2/review');
 
         $response->assertStatus(200);
     }
