@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index(Lesson $lesson)
     {
-        $reviews = $lesson->with("reviews")->get();
+        $reviews = $lesson->with("reviews.user")->get();
         
         return new ReviewCollection($reviews);
     }
