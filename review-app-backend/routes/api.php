@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FacultyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource("lesson", LessonController::class);
 
-Route::apiResource("{lesson}/review", ReviewController::class);
+Route::apiResource("{lesson}/review", ReviewController::class)->only(["index", "create", "store", "update", "destroy"]);
+
+Route::apiResource("faculty", FacultyController::class)->only(["index", "create", "store", "update", "destroy"]);

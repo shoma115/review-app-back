@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faculty;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\FacultyCollection;
 
 class FacultyController extends Controller
 {
@@ -13,7 +14,9 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
+        $faculties = Faculty::all();
+
+        return new FacultyCollection($faculties);
     }
 
     /**
