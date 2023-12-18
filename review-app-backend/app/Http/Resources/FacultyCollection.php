@@ -15,7 +15,7 @@ class FacultyCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            "faculty" => $this->collection,
+            "faculties" => $this->collection,
         ];
     }
 }

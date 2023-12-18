@@ -12,14 +12,18 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $faculty_id = $request->query("faculty");
         $per_page = 15;
         // リレーションから同時に取得している
         $lessons = Lesson::with("teachers")
                    ->withAvg("reviews", "ease")
                    ->withAvg("reviews", "enrichment")
-                   ->with("division.major.department.faculty")
+                //    リレーション先をとってくるwithメソッドと、取得するデータをレコードで絞り込めるwhereHasメソッドを合わせたやべーやつ
+                   ->withWhereHas("division.major.department.faculty", function($faculty) use ($faculty_id) {
+                        $faculty->where("id", "=", $faculty_id);
+                   }) 
                    ->paginate($per_page);
 
         return new LessonCollection($lessons);
