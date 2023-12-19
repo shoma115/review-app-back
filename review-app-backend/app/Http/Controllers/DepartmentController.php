@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\DepartmentCollection;
 
 class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $faculty_id = $request->query("facultyId");
+
+        $departments = Department::where("faculty_id", "=", $faculty_id)
+                                    ->with("majors.divisions")
+                                    ->get();
+
+        return new DepartmentCollection($departments);
     }
 
     /**

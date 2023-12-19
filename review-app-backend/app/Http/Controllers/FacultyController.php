@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::get(["id", "name"]);
 
         return new FacultyCollection($faculties);
     }

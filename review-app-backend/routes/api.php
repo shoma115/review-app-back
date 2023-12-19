@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::get("/lesson/search", [LessonController::class, "search"]);
 Route::apiResource("{lesson}/review", ReviewController::class)->only(["index", "create", "store", "update", "destroy"]);
 
 Route::apiResource("faculty", FacultyController::class)->only(["index", "create", "store", "update", "destroy"]);
+
+Route::apiResource("department", DepartmentController::class)->only(["index", "create", "store", "update", "destroy"]);
