@@ -29,6 +29,13 @@ class LessonController extends Controller
         return new LessonCollection($lessons);
     }
 
+    public function search(Request $request) {
+        $faculty_id = $request->query("faculty");
+        $per_page = 15;
+
+        $query_lesson = Lesson::query();
+    }
+
     /**
      * Store a newly created resource in storage.
      */
