@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index(Request $request)
     {
-        $faculty_id = $request->query("facultyId");
+        $faculty_id = $request->query("faculty");
 
         $departments = Department::where("faculty_id", "=", $faculty_id)
                                     ->with("majors.divisions")
