@@ -13,9 +13,10 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Lesson $lesson)
+    public function index(Request $request)
     {
-        $reviews = $lesson->with("reviews.user")->get();
+        $lesson_id = $request->query("lesson");
+        $reviews = Review::where();
         
         return new ReviewCollection($reviews);
     }

@@ -11,8 +11,8 @@ class Review extends Model
 {
     use HasFactory;
 
-    public function lessons() {
-        return $this->belongsToMany(Lessn::class);
+    public function lesson() {
+        return $this->belongsTo(Lessn::class);
     }
 
     public function user() {

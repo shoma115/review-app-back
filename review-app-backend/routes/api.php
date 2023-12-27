@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/lesson/search", [LessonController::class, "search"]);
 Route::apiResource("lesson", LessonController::class);
 
-Route::apiResource("{lesson}/review", ReviewController::class)->only(["index", "create", "store", "update", "destroy"]);
+Route::apiResource("review", ReviewController::class)->only(["index", "create", "store", "update", "destroy"]);
 
 Route::apiResource("faculty", FacultyController::class)->only(["index", "create", "store", "update", "destroy"]);
 

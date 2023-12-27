@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lesson_review', function (Blueprint $table) {
-            $table->id();
+        Schema::table('reviews', function (Blueprint $table) {
             $table->foreignId("lesson_id")->constrained()->cascadeOnDelete();
-            $table->foreignId("review_id")->constrained()->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('class_post');
+        Schema::table('reviews', function (Blueprint $table) {
+            //
+        });
     }
 };

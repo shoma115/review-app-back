@@ -11,6 +11,6 @@ class Faculty extends Model
     use HasFactory;
 
     public function departments() {
-        return $this->haMany(Department::class);
+        return $this->hasMany(Department::class);
     }
 }
