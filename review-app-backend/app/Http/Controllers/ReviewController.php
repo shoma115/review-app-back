@@ -23,6 +23,24 @@ class ReviewController extends Controller
         return new ReviewCollection($reviews);
     }
 
+    public function search(Request $request) 
+    {
+        $lesson_id = $request->query("lesson");
+        $query_review = Review::query();
+
+        if($request->has("search")) {
+           $search_word = $request->query("search");
+           $query_review->where("content", "LIKE", $search_word); 
+        }
+
+        $filterd_reviews = $query_review
+                            ->where("lesson_id", "=", $lesson_id)
+                            ->with("user")
+                            ->get();
+        
+        return new ReviewCollection($filterd_reviews); 
+    }
+
     /**
      * Store a newly created resource in storage.
      */
