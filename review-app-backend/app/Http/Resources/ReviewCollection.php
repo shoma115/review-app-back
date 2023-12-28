@@ -15,7 +15,7 @@ class ReviewCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            "lesson" => $this->collection,
+            "reviews" => $this->collection,
         ];
     }
 }
