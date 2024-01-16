@@ -30,7 +30,7 @@ class ReviewController extends Controller
 
         if($request->has("search")) {
            $search_word = $request->query("search");
-           $query_review->where("content", "LIKE", $search_word); 
+           $query_review->where("content", "LIKE", "%$search_word%"); 
         }
 
         $filterd_reviews = $query_review
