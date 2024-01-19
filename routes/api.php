@@ -24,7 +24,7 @@ use App\Http\Controllers\Auth\LogoutController;
 
 Route::post("/login", LoginController::class)->name("login");
 Route::post("/logout", LogoutController::class)->name("logout");
-Route::post("/register", UserController::class)->name("register");
+Route::post("/register", [UserController::class, "store"])->name("register");
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::get("/lesson/search", [LessonController::class, "search"])->name("lesson_search");
