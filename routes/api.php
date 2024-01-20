@@ -9,6 +9,8 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\VerificationController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 /*
@@ -26,7 +28,12 @@ Route::post("/login", LoginController::class)->name("login");
 Route::post("/logout", LogoutController::class)->name("logout");
 Route::post("/register", [UserController::class, "store"])->name("register");
 
-Route::middleware('auth:sanctum')->group(function() {
+Route::middleware("auth:sanctum", "verified")->group(function() {
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, "verification_request"])
+    ->middleware(['auth', 'signed'])->name('verification.verify');
+    Route::post('/email/verification-notification', [VerificationController::class, "resend_verification_email"])
+    ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
     Route::get("/lesson/search", [LessonController::class, "search"])->name("lesson_search");
     Route::apiResource("lesson", LessonController::class);
 
