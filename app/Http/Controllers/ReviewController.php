@@ -7,6 +7,8 @@ use App\Models\Lesson;
 use App\Http\Resources\ReviewCollection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -44,9 +46,11 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReviewRequest $request)
     {
-        //
+        $review = $request->only(["ease", "enrichment", "title", "content", "lesson_id"]);
+        $review["user_id"] = Auth::id();
+        Review::create($review);
     }
 
     /**
