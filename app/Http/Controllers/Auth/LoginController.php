@@ -29,7 +29,7 @@ final class LoginController extends Controller
             $request->session()->regenerate();
 
             // レスポンスを返す。ここのJsonにはAPIリソースは使わない。APIリソースはモデルやコレクションデータに特化しているようだから
-            return new JsonRequest([
+            return new JsonResponse([
                 'message' => 'ログインに成功しました。'
             ]);
         }
