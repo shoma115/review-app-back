@@ -18,4 +18,15 @@ class Review extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    // mass assignment防止のため、laravelはデフォルトでAPI等を通じた外部からのカラムの書き換えを制限している
+    // 書き換えが出来るカラムを指定
+    protected $fillable = [
+        "ease",
+        "enrichment",
+        "title",
+        "content",
+        "user_id",
+        "lesson_id"
+    ];
 }
