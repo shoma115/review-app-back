@@ -66,7 +66,8 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $updated_review = $request->only(["ease", "enrichment", "title", "content"]);
+        $review->update($updated_review);
     }
 
     /**
@@ -74,6 +75,6 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
     }
 }
